@@ -2,28 +2,53 @@ def input_students
   puts "Please enter the names of the students"
   puts "To finish, just hit return twice"
   students = []
-  name = gets.chomp
+  name = gets.chomp.capitalize
   puts "And where was this student born?"
-  country_of_birth = gets.chomp
+  country_of_birth = gets.chomp.capitalize
+  if country_of_birth.empty?
+    country_of_birth = "Somewhere"
+  end
   puts "Does he/she has any hobbies?"
-  hobbies = gets.chomp
+  hobbies = gets.chomp.capitalize
+  if hobbies.empty?
+    hobbies = "No"
+  end
+  puts "Which cohort is he/she going to attend?"
+  cohort = gets.chomp.capitalize
+  until ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"].include? cohort
+    puts "We need you to give us a month."
+    cohort = gets.chomp.capitalize
+  end
 
   while !name.empty? do
-    students << {name: name, country: country_of_birth, hobbies: hobbies, cohort: :march}
+    students << {name: name, country: country_of_birth, hobbies: hobbies, cohort: cohort}
     puts "Now we have #{students.count} students"
+    puts "What's the name of the next student? (if none, just press return)"
     name = gets.chomp
     break if name.empty?
     puts "And where was this student born?"
-    country_of_birth = gets.chomp
+    country_of_birth = gets.chomp.capitalize
+    if country_of_birth.empty?
+      country_of_birth = "Somewhere"
+    end
     puts "Does he/she has any hobbies?"
-    hobbies = gets.chomp
+    hobbies = gets.chomp.capitalize
+    if hobbies.empty?
+      hobbies = "No"
+    end
+    puts "Which cohort is he/she going to attend?"
+    cohort = gets.chomp.capitalize
+    until ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"].include? cohort
+      puts "We need you to give us a month."
+      cohort = gets.chomp.capitalize
+    end
   end
   students
 end
 
 def print_header
-  puts "The students of Villains Academy"
-  puts "----------------"
+  puts "The students of Villains Academy".center(100)
+  puts "----------------".center(100)
 end
 
 def print(students)
@@ -35,7 +60,7 @@ def print(students)
 end
 
 def print_footer(names)
-  puts "Overall, we have #{names.count} great students."
+  puts "Overall, we have #{names.count} great students.".center(100)
 end
 
 students = input_students
