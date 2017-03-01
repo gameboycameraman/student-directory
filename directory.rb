@@ -29,7 +29,7 @@ end
 def print(students)
   number_of_students = 1
   until number_of_students > students.length
-    puts "#{number_of_students}. #{students[number_of_students -1][:name]} from #{students[number_of_students -1][:country]} - Hobby : #{students[number_of_students -1][:hobbies]} (#{students[number_of_students -1][:cohort]} cohort)"
+    puts "#{number_of_students}. #{students[number_of_students -1][:name]} from #{students[number_of_students -1][:country]} - Hobby : #{students[number_of_students -1][:hobbies]} (#{students[number_of_students -1][:cohort]} cohort)".center(100)
     number_of_students += 1
   end
 end
