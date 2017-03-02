@@ -50,7 +50,7 @@ def input_students
       cohort = gets.chomp.capitalize
     end
   end
-  students
+  students.sort_by{|student| student[:cohort]}
 end
 
 
