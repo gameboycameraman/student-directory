@@ -2,24 +2,24 @@ def input_students
   puts "Please enter the names of the students"
   puts "To finish, just hit return twice"
   students = []
-  name = gets.chomp.capitalize
+  name = gets.capitalize.gsub("\n", "")
 
   puts "And where was this student born?"
-  country_of_birth = gets.chomp.capitalize
+  country_of_birth = gets.capitalize.gsub("\n", "")
   if country_of_birth.empty?
     country_of_birth = "Somewhere"
   end
   puts "Does he/she has any hobbies?"
-  hobbies = gets.chomp.capitalize
+  hobbies = gets.capitalize.gsub("\n", "")
   if hobbies.empty?
     hobbies = "No"
   end
 
   puts "Which cohort is he/she going to attend?"
-  cohort = gets.chomp.capitalize
+  cohort = gets.capitalize.gsub("\n", "")
   until ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"].include? cohort
     puts "We need you to give us a month."
-    cohort = gets.chomp.capitalize
+    cohort = gets.capitalize.gsub("\n", "")
   end
 
 
@@ -31,23 +31,23 @@ def input_students
       puts "Now we have #{students.count} students"
     end
     puts "What's the name of the next student? (if none, just press return)"
-    name = gets.chomp
+    name = gets.capitalize.gsub("\n", "")
     break if name.empty?
     puts "And where was this student born?"
-    country_of_birth = gets.chomp.capitalize
+    country_of_birth = gets.capitalize.gsub("\n", "")
     if country_of_birth.empty?
       country_of_birth = "Somewhere"
     end
     puts "Does he/she has any hobbies?"
-    hobbies = gets.chomp.capitalize
+    hobbies = gets.capitalize.gsub("\n", "")
     if hobbies.empty?
       hobbies = "No"
     end
     puts "Which cohort is he/she going to attend?"
-    cohort = gets.chomp.capitalize
+    cohort = gets.capitalize.gsub("\n", "")
     until ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"].include? cohort
       puts "We need you to give us a month."
-      cohort = gets.chomp.capitalize
+      cohort = gets.capitalize.gsub("\n", "")
     end
   end
   students.sort_by{|student| student[:cohort]}
