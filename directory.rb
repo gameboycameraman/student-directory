@@ -3,6 +3,7 @@ def input_students
   puts "To finish, just hit return twice"
   students = []
   name = gets.chomp.capitalize
+
   puts "And where was this student born?"
   country_of_birth = gets.chomp.capitalize
   if country_of_birth.empty?
@@ -13,6 +14,7 @@ def input_students
   if hobbies.empty?
     hobbies = "No"
   end
+
   puts "Which cohort is he/she going to attend?"
   cohort = gets.chomp.capitalize
   until ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"].include? cohort
@@ -20,9 +22,14 @@ def input_students
     cohort = gets.chomp.capitalize
   end
 
+
   while !name.empty? do
     students << {name: name, country: country_of_birth, hobbies: hobbies, cohort: cohort}
-    puts "Now we have #{students.count} students"
+    if students.count < 2
+      puts "Now we have 1 student."
+    else
+      puts "Now we have #{students.count} students"
+    end
     puts "What's the name of the next student? (if none, just press return)"
     name = gets.chomp
     break if name.empty?
@@ -46,6 +53,7 @@ def input_students
   students
 end
 
+
 def print_header
   puts "The students of Villains Academy".center(100)
   puts "----------------".center(100)
@@ -62,6 +70,7 @@ end
 def print_footer(names)
   puts "Overall, we have #{names.count} great students.".center(100)
 end
+
 
 students = input_students
 print_header
