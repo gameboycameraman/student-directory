@@ -1,5 +1,9 @@
 ARGV.first
 
+if ARGV.empty?
+  ARGV << "students.csv"
+end
+
 @students =[]
 
 def try_load_students
