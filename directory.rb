@@ -1,8 +1,8 @@
+require "csv"
+
 if ARGV.empty?
   ARGV << "students.csv"
 end
-
-ARGV.first
 
 @students =[]
 
@@ -22,7 +22,6 @@ end
 def save_students
   puts "What would you name the file to save:"
   save_file = STDIN.gets.chomp
-  require "csv"
   CSV.open(save_file, "wb") do |csv|
     @students.each do |student|
       student_data = [student[:name], student[:cohort]]
@@ -36,11 +35,8 @@ def load_students(load_file = nil)
     puts "Which file would you like to load:"
     load_file = STDIN.gets.chomp
   end
-  File.open(load_file, "r") do |file|
-    file.readlines.each do |line|
-      name, cohort = line.chomp.split(",")
-      adding_students_to_list(name, cohort)
-    end
+  CSV.read(load_file).each do |name, cohort|
+    adding_students_to_list(name, cohort)
   end
 end
 
