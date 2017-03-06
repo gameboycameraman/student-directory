@@ -6,18 +6,6 @@ ARGV.first
 
 @students =[]
 
-def load_students(load_file = nil)
-  if load_file.nil?
-    puts "Which file would you like to load:"
-    load_file = STDIN.gets.chomp
-  end
-  File.open(load_file, "r") do |file|
-    file.readlines.each do |line|
-      name, cohort = line.chomp.split(",")
-      @students << {name: name, cohort: cohort.to_sym}
-    end
-  end
-end
 
 def try_load_students
   filename = ARGV.first
@@ -43,15 +31,33 @@ def save_students
   end
 end
 
+def load_students(load_file = nil)
+  if load_file.nil?
+    puts "Which file would you like to load:"
+    load_file = STDIN.gets.chomp
+  end
+  File.open(load_file, "r") do |file|
+    file.readlines.each do |line|
+      name, cohort = line.chomp.split(",")
+      adding_students_to_list(name, cohort)
+    end
+  end
+end
+
 def input_students
   puts "Please enter the names of the students"
   puts "To finish just hit return twice"
   name = STDIN.gets.chomp
   while !name.empty? do
-    @students << {name: name, cohort: :november}
-    puts "Now we have #{@students.count} students"
     name = STDIN.gets.chomp
+    cohort = "november"
+    adding_students_to_list(name, cohort)
+    puts "Now we have #{@students.count} students"
   end
+end
+
+def adding_students_to_list(name, cohort)
+  @students << {name: name, cohort: cohort}
 end
 
 def interactive_menu
