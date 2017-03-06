@@ -49,10 +49,10 @@ def input_students
   puts "To finish just hit return twice"
   name = STDIN.gets.chomp
   while !name.empty? do
-    name = STDIN.gets.chomp
     cohort = "november"
     adding_students_to_list(name, cohort)
     puts "Now we have #{@students.count} students"
+    name = STDIN.gets.chomp
   end
 end
 
