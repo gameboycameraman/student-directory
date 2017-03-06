@@ -1,8 +1,8 @@
-ARGV.first
-
 if ARGV.empty?
   ARGV << "students.csv"
 end
+
+ARGV.first
 
 @students =[]
 
@@ -11,12 +11,12 @@ def load_students(load_file = nil)
     puts "Which file would you like to load:"
     load_file = STDIN.gets.chomp
   end
-  file = File.open(load_file, "r")
-  file.readlines.each do |line|
-    name, cohort = line.chomp.split(",")
-    @students << {name: name, cohort: cohort.to_sym}
+  File.open(load_file, "r") do |file|
+    file.readlines.each do |line|
+      name, cohort = line.chomp.split(",")
+      @students << {name: name, cohort: cohort.to_sym}
+    end
   end
-  file.close
 end
 
 def try_load_students
@@ -34,13 +34,13 @@ end
 def save_students
   puts "What would you name the file to save:"
   save_file = STDIN.gets.chomp
-  file = File.open(save_file, "w")
-  @students.each do |student|
-    student_data = [student[:name], student[:cohort]]
-    csv_line = student_data.join(",")
-    file.puts csv_line
+  File.open(save_file, "w") do |file|
+    @students.each do |student|
+      student_data = [student[:name], student[:cohort]]
+      csv_line = student_data.join(",")
+      file.puts csv_line
+    end
   end
-  file.close
 end
 
 def input_students
