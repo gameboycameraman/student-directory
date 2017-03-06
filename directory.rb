@@ -65,7 +65,7 @@ def print_menu
   puts "1. Input the students"
   puts "2. Show the students"
   puts "3. Save the list to a file"
-  puts "4. Load the list of students.csv"
+  puts "4. Load a list"
   puts "9. Exit"
 end
 
@@ -78,14 +78,23 @@ end
 def process(selection)
   case selection
     when "1"
+      puts "You asked for - Input Students -"
       input_students
+      puts "Thank you! Waiting for a new selection:"
     when "2"
+      puts "You asked for - Show the Students -"
       show_students
+      puts "Thank you! Waiting for a new selection:"
     when "3"
+      puts "You asked for - Save the list to a file -"
       save_students
+      puts "Thank you! Waiting for a new selection:"
     when "4"
+      puts "You asked for - Load a list -"
       load_students
+      puts "Thank you! Waiting for a new selection:"
     when "9"
+      puts "You are exiting the program, goodbye !"
       exit
     else
       puts "I don't know what you meant, try again:"
