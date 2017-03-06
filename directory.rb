@@ -6,9 +6,11 @@ end
 
 @students =[]
 
-def load_students(load_file)
-  puts "Which file would you like to load:"
-  load_file = STDIN.gets.chomp
+def load_students(load_file = nil)
+  if load_file.nil?
+    puts "Which file would you like to load:"
+    load_file = STDIN.gets.chomp
+  end
   file = File.open(load_file, "r")
   file.readlines.each do |line|
     name, cohort = line.chomp.split(",")
