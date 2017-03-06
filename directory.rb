@@ -22,11 +22,11 @@ end
 def save_students
   puts "What would you name the file to save:"
   save_file = STDIN.gets.chomp
-  File.open(save_file, "w") do |file|
+  require "csv"
+  CSV.open(save_file, "wb") do |csv|
     @students.each do |student|
       student_data = [student[:name], student[:cohort]]
-      csv_line = student_data.join(",")
-      file.puts csv_line
+      csv << student_data
     end
   end
 end
